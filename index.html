@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 22nd Birthday My Love</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --pink-dark: #d23669;
+            --pink-medium: #ff6b81;
+            --pink-light: #ff8fab;
+            --pink-soft: #ffb3c6;
+            --pink-pale: #ffd7e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fff5f7;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Login Section */
+        .login-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 182, 193, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
+
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(210, 54, 105, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            transform: scale(0.9);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.98); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(0.98); }
+        }
+
+        .login-title {
+            color: var(--pink-dark);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .login-subtitle {
+            color: var(--pink-medium);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 2px solid #ffd7e1;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .login-input:focus {
+            border-color: var(--pink-medium);
+        }
+
+        .login-btn {
+            background: linear-gradient(45deg, var(--pink-dark), var(--pink-medium));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(210, 54, 105, 0.3);
+            width: 100%;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(210, 54, 105, 0.4);
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 14px;
+            height: 20px;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--pink-dark), var(--pink-light));
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23ffffff10"><path d="M30,50 Q50,30 70,50 Q50,70 30,50 Z"/></svg>');
+            background-size: 100px;
+            opacity: 0.3;
+        }
+
+        .birthday-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .age-number {
+            font-size: 5rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff8fab, #fb6f92);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .birthday-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* Flower Decorations */
+        .flower {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .flower-1 {
+            top: 20px;
+            left: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23ffffff"><circle cx="50" cy="50" r="20"/><circle cx="20" cy="30" r="15"/><circle cx="80" cy="30" r="15"/><circle cx="20" cy="70" r="15"/><circle cx="80" cy="70" r="15"/><circle cx="30" cy="20" r="15"/><circle cx="70" cy="20" r="15"/><circle cx="30" cy="80" r="15"/><circle cx="70" cy="80" r="15"/></svg>');
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .flower-2 {
+            bottom: 30px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23ffffff"><path d="M50,20 Q60,40 50,60 Q40,40 50,20 Z M30,30 Q40,50 30,70 Q20,50 30,30 Z M70,30 Q80,50 70,70 Q60,50 70,30 Z M20,50 Q40,60 20,70 Q10,50 20,50 Z M80,50 Q90,60 80,70 Q60,50 80,50 Z"/></svg>');
+            animation: float 7s ease-in-out infinite 1s;
+        }
+
+        /* Message Section */
+        .message-section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .message-title {
+            color: var(--pink-dark);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .message-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink-dark), var(--pink-light));
+        }
+
+        .message-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .heart-divider {
+            font-size: 2rem;
+            color: var(--pink-medium);
+            margin: 20px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 40px 20px;
+            background: linear-gradient(180deg, white 0%, #fff5f7 100%);
+        }
+
+        .gallery-title {
+            text-align: center;
+            color: var(--pink-dark);
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .photo-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(210, 54, 105, 0.1);
+            transition: all 0.3s;
+            aspect-ratio: 1/1;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(210, 54, 105, 0.2);
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .photo-item:hover .photo-img {
+            transform: scale(1.1);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(210, 54, 105, 0.7));
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
+        }
+
+        /* Memory Timeline */
+        .timeline-section {
+            padding: 40px 20px;
+            background-color: white;
+        }
+
+        .timeline-title {
+            text-align: center;
+            color: var(--pink-dark);
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--pink-soft);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(210, 54, 105, 0.1);
+            position: relative;
+        }
+
+        .timeline-date {
+            color: var(--pink-medium);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .timeline-text {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid white;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid white;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--pink-dark);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--pink-dark), var(--pink-medium));
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .footer-text {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-heart {
+            color: white;
+            font-size: 2rem;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50px;
+            padding: 10px 15px;
+            box-shadow: 0 5px 15px rgba(210, 54, 105, 0.2);
+            display: flex;
+            align-items: center;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+
+        .music-player:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(210, 54, 105, 0.3);
+        }
+
+        .music-info {
+            margin-right: 15px;
+            color: var(--pink-dark);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .music-control {
+            background: linear-gradient(45deg, var(--pink-dark), var(--pink-medium));
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+                border-left: none;
+                border-right: 10px solid white;
+            }
+            
+            .birthday-title {
+                font-size: 2rem;
+            }
+            
+            .age-number {
+                font-size: 4rem;
+            }
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Section -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-box">
+            <h1 class="login-title">Happy Birthday Padpad</h1>
+            <p class="login-subtitle">Answer these questions to unlock</p>
+            
+            <input type="text" id="nickname" class="login-input" placeholder="What's your name in my contacts?">
+            <input type="text" id="anniversary" class="login-input" placeholder="When did we start dating? (DD MMMM)">
+            
+            <div class="error-message" id="errorMessage"></div>
+            <button class="login-btn" id="loginBtn">Unlock</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+            <div class="flower flower-1"></div>
+            <div class="flower flower-2"></div>
+            
+            <h1 class="birthday-title">Happy 22nd Birthday</h1>
+            <div class="age-number">22</div>
+            <h2 class="birthday-subtitle">To The Most Amazing Person In My Life</h2>
+        </header>
+
+        <!-- Message Section -->
+        <section class="message-section">
+            <div class="floating-element" style="top: 10%; left: 5%; width: 30px; height: 30px; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%23ff8fab\'><path d=\'M50,30 Q60,10 70,30 Q80,50 50,70 Q20,50 30,30 Q40,10 50,30 Z\'/></svg>'); animation: float 6s ease-in-out infinite;"></div>
+            <div class="floating-element" style="top: 70%; right: 8%; width: 40px; height: 40px; background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%23d23669\'><path d=\'M50,20 Q60,40 50,60 Q40,40 50,20 Z M30,30 Q40,50 30,70 Q20,50 30,30 Z M70,30 Q80,50 70,70 Q60,50 70,30 Z M20,50 Q40,60 20,70 Q10,50 20,50 Z M80,50 Q90,60 80,70 Q60,50 80,50 Z\'/></svg>'); animation: float 7s ease-in-out infinite 1s;"></div>
+            
+            <div class="message-container">
+                <h2 class="message-title">My Dearest Padpad</h2>
+                
+                <div class="message-content">
+                    <p>Happy 22nd birthday to the most beautiful soul I've ever known! 🎉🎂</p>
+                    
+                    <p>Today marks another year of your incredible existence, and I feel so lucky to be part of your journey. You've brought so much joy, love, and laughter into my life that I can't imagine a world without you in it.</p>
+                    
+                    <p>At 22, you're more amazing than ever - your kindness shines brighter, your smile warms more hearts, and your love grows deeper. I admire your strength, your passion, and the way you make every day special just by being you.</p>
+                    
+                    <p>This past year with you has been filled with unforgettable moments, and I can't wait to create even more beautiful memories in the years to come. I promise to keep making you laugh, to be there through thick and thin, and to love you more with each passing day.</p>
+                    
+                    <p>May this year bring you all the happiness, success, and love you deserve. You're my rockstar, my partner in crime, and my greatest adventure. Here's to you, my love!</p>
+                </div>
+                
+                <div class="heart-divider">❤️</div>
+                
+                <div class="message-content" style="text-align: center; font-style: italic;">
+                    <p>"In all the world, there is no heart for me like yours.<br>
+                    In all the world, there is no love for you like mine."</p>
+                    <p style="margin-top: 10px;">- Forever Yours</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">Some of My Favorites Moments</h2>
+            
+            <div class="photo-grid">
+                <!-- Photo 1 -->
+                <div class="photo-item">
+                    <img src="first hug.jpg" alt="Our Memory" class="photo-img">
+                    <div class="photo-caption">First Photo Hug</div>
+                </div>
+                
+                <!-- Photo 2 -->
+                <div class="photo-item">
+                    <img src="clay.jpg" alt="Our Memory" class="photo-img">
+                    <div class="photo-caption">Clay Date</div>
+                </div>
+                
+                <!-- Photo 3 -->
+                <div class="photo-item">
+                    <img src="my birthday.jpg" alt="Our Memory" class="photo-img">
+                    <div class="photo-caption">My Birthday</div>
+                </div>
+                
+                <!-- Photo 4 -->
+                <div class="photo-item">
+                    <img src="favorite pict.jpg" alt="Our Memory" class="photo-img">
+                    <div class="photo-caption">My Favorite Pict</div>
+                </div>
+                
+                <!-- Photo 5 -->
+                <div class="photo-item">
+                    <img src="first trip.jpg" alt="Our Memory" class="photo-img">
+                    <div class="photo-caption">First Trip</div>
+                </div>
+                
+                <!-- Photo 6 -->
+                <div class="photo-item">
+                    <img src="breakfast.jpg" alt="Our Memory" class="photo-img">
+                    <div class="photo-caption">Breakfast!!</div>
+                </div>
+
+                <!-- Photo 7 -->
+                <div class="photo-item">
+                    <img src="ride.jpg" alt="Our Memory" class="photo-img">
+                    <div class="photo-caption">Riding Around City</div>
+                </div>
+
+                <!-- Photo 8 -->
+                <div class="photo-item">
+                    <img src="photobooth.jpg" alt="Our Memory" class="photo-img">
+                    <div class="photo-caption">Photobooth!!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <h2 class="timeline-title">Our Journey Together</h2>
+            
+            <div class="timeline">
+                <!-- Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">30 September 2024</div>
+                        <div class="timeline-text">The day we officially became a couple. I still remember how nervous I was when I asked you to be mine.</div>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">13 November 2024</div>
+                        <div class="timeline-text">My First Birthday With You. You made My Birthday magical in ways I never imagined.</div>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">30 November 2024</div>
+                        <div class="timeline-text">Our 1st anniversary. I knew then that I wanted many more years with you.</div>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">17 December 2024</div>
+                        <div class="timeline-text">Our first trip together. A day full of happiness</div>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">14 Februari 2025</div>
+                        <div class="timeline-text">Valentine's Day where I realized I was falling deeply in love with you.</div>
+                    </div>
+                </div>
+                
+                <!-- Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Today</div>
+                        <div class="timeline-text">Celebrating your 22nd birthday and looking forward to all our tomorrows together.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="floating-hearts" id="floatingHearts"></div>
+            
+            <p class="footer-text">Thank you for being you</p>
+            <p>With all my love <span class="footer-heart">❤️</span> Forever and always</p>
+        </footer>
+
+        <!-- Music Player -->
+        <div class="music-player">
+            <div class="music-info">ILYSB - Lany</div>
+            <button class="music-control" id="musicControl">
+                <i class="fas fa-play"></i>
+            </button>
+            <audio id="bgMusic" loop>
+                <!-- Replace with actual music file -->
+                <source src="ilysb.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        // Login Functionality
+        const loginContainer = document.getElementById('loginContainer');
+        const mainContent = document.getElementById('mainContent');
+        const loginBtn = document.getElementById('loginBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        
+        // Correct answers
+        const correctNickname = "ms.rockstar";
+        const correctAnniversary = "30 september";
+        
+        loginBtn.addEventListener('click', function() {
+            const nickname = document.getElementById('nickname').value.toLowerCase();
+            const anniversary = document.getElementById('anniversary').value.toLowerCase();
+            
+            if (nickname === correctNickname && anniversary === correctAnniversary) {
+                // Correct answers
+                loginContainer.style.opacity = '0';
+                setTimeout(() => {
+                    loginContainer.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                        createHearts();
+                    }, 100);
+                }, 500);
+            } else {
+                // Wrong answers
+                errorMessage.textContent = "Wrong answers! Try again.";
+                loginContainer.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    loginContainer.style.animation = '';
+                }, 500);
+            }
+        });
+        
+        // Add shake animation for wrong answers
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Music Player
+        const musicControl = document.getElementById('musicControl');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+        
+        musicControl.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicControl.innerHTML = '<i class="fas fa-play"></i>';
+            } else {
+                bgMusic.play();
+                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // Create floating hearts
+        function createHearts() {
+            const colors = ['#ff6b81', '#ff8fab', '#d23669', '#ffb3c6'];
+            const container = document.getElementById('floatingHearts');
+            
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animation = `float ${Math.random() * 6 + 3}s ease-in-out infinite`;
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.opacity = Math.random() * 0.5 + 0.3;
+                container.appendChild(heart);
+            }
+        }
+        
+        // Allow pressing Enter to submit login form
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loginBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
